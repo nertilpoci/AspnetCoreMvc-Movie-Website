@@ -18,7 +18,6 @@ namespace Movies.DAL
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
         Task<bool> AnyAsync();
         #endregion
@@ -35,6 +34,7 @@ namespace Movies.DAL
         void RemoveRange(IEnumerable<TEntity> entities);
 
         bool Any(Expression<Func<TEntity, bool>> predicate);
+        void Update(TEntity entity);
         bool Any();
         #endregion
 

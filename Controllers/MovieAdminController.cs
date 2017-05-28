@@ -137,9 +137,8 @@ namespace Movies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, IFormFile portrait, IFormFile landscape, [Bind("Id,Name,ReleaseDate,YoutubeVideoId,Rating,GenreId")]  Movie movie)
+        public async Task<ActionResult> Edit(int id, IFormFile portrait, IFormFile landscape, [Bind("Id,Name,PosterPortrait,Description,PosterLandscape,ReleaseDate,YoutubeVideoId,Rating,GenreId")]  Movie movie)
         {
-
 
             if (ModelState.IsValid)
             {
@@ -152,7 +151,7 @@ namespace Movies.Controllers
                         await portrait.CopyToAsync(fileStream);
                     }
                     System.IO.File.Delete(Path.Combine(uploadsFolder, movie.PosterPortrait));
-
+                  
                     movie.PosterPortrait = portraitFile;
                 }
                 if (landscape != null)
@@ -164,17 +163,15 @@ namespace Movies.Controllers
                     {
                         await landscape.CopyToAsync(fileStream);
                     }
-                    var mv = _work.Movies.Get(id);
-                    System.IO.File.Delete(Path.Combine(uploadsFolder, mv.PosterLandscape));
+                   
+                    System.IO.File.Delete(Path.Combine(uploadsFolder, movie.PosterLandscape));
                     movie.PosterLandscape = landscapeFile;
                 }
 
 
 
 
-
-                var old = _work.Movies.Get(id);
-                old = movie;
+                _work.Movies.Update(movie);
                 _work.Persist();
                 return RedirectToAction("Index");
             }

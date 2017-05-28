@@ -143,7 +143,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a asp-action="index" asp-controller="movieadmin" class="btn btn-info btn-sm"> Movies</a>
+                    <a asp-action="edit" asp-controller="genres" asp-route-id="@item.Id"  class="btn btn-info btn-sm"> Edit</a>
+
                     <a asp-action="delete" asp-controller="genres" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
 </div>
             </div>

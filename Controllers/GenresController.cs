@@ -100,8 +100,7 @@ namespace Movies.Controllers
             {
                 try
                 {
-                    var dbEl = _work.Genres.Get(id);
-                    dbEl=genre;
+                   _work.Genres.Update(genre) ;
                     await _work.PersistAsync();
                 }
                 catch (DbUpdateConcurrencyException)

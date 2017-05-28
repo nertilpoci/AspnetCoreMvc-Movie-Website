@@ -17,6 +17,8 @@
                 <form asp-action="Edit" method="post" enctype="multipart/form-data" class="form-horizontal" data-toggle="validator" asp-controller="MovieAdmin">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="PosterPortrait" />
+                    <input type="hidden" asp-for="PosterLandscape" />
                     <div class="form-group">
                         <label asp-for="Name" class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-8">

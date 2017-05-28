@@ -63,8 +63,10 @@ namespace Movies.DAL
         {
             return count==0? await _entities.Where(predicate).ToListAsync() : await _entities.Where(predicate).Take(count).ToListAsync();
         }
+     
 
-#endregion
+
+        #endregion
         #region NotAsync
         public TEntity Get(int id)
         {
@@ -114,6 +116,15 @@ namespace Movies.DAL
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _entities.RemoveRange(entities);
+        }
+
+       
+        public void Update(TEntity entity)
+        {
+
+            Context.Entry(entity).State = EntityState.Modified;
+           
+           
         }
         #endregion
 

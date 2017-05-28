@@ -81,8 +81,8 @@ namespace Movies.Controllers
             {
                 try
                 {
-                    var existing = _work.Links.Get(id);
-                    existing = movieLinks;
+                    _work.Links.Update(movieLinks);
+
                     await _work.PersistAsync();
                 }
                 catch (DbUpdateConcurrencyException)
