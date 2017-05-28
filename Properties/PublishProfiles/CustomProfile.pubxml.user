@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUXlUtf7Yik+7fSs80FZmyAAAAAACAAAAAAAQZgAAAAEAACAAAAA3xyM5z4rvjYXnCYGU6s9OI8TxBBTAWtj8Ocb9e3nDgwAAAAAOgAAAAAIAACAAAADnDXVaAIl3f4/opBBWP6f9wA/MMgWbJb/6UhsTsXsSH0AAAAAxJEx50XnHvzcyQlDHKqxFA85Q0sxelzqxe1ROJscTL+C+EhT0Xea2FQq252xxL6hqez8NO1ZzNQjqYf9zsiYgQAAAAJTBvdCXi7M9v6ScfRswcFlZ62ZTSByn7w3t7surCJsUZyLIxXZ5TGGBdxAZ76J6+1aG4l9BxQKsdK7RrKfUsJo=</EncryptedPassword>
+    <_PublishTargetUrl>ftp://npoci.com</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>

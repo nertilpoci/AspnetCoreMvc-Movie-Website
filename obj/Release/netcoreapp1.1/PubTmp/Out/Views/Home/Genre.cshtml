@@ -1,0 +1,24 @@
+@model Sakura.AspNetCore.IPagedList<Movies.Models.Movie>
+
+
+@{
+    ViewData["Title"] = ViewBag.Genre.Name;
+}
+<div class="container">
+    <div class="row">
+       <br />
+            <h2 class="w3l-inner-h-title text-center  text-muted"><span class="text-danger">@ViewBag.Genre.Name </span>  Movies</h2>
+           
+        <br />
+      
+
+    </div>
+    <div class="row">
+                    @await Component.InvokeAsync("MovieList", Model)
+
+    </div>
+    <pager/>
+</div>
+
+           
+   

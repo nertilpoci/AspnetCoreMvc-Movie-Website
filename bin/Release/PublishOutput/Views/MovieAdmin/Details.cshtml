@@ -1,0 +1,30 @@
+﻿@model Movies.Models.Movie
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+
+<div class="row" >
+  
+    <div class="col-md-6">
+        <div class="row">
+            <h2 class="text-center text-capitalize text-primary">@Model.Name</h2>
+            <img class="img-rounded img-responsive center-block" src="~/MoviePosters/@Model.PosterLandscape" />
+            <p class="text-center text-muted">@Model.Description</p>
+            <br />
+            <div class="col-md-6 col-md-offset-3 ">
+                <a class="btn-success btn" role="button" asp-action="edit" asp-controller="MovieAdmin" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn-success btn" role="button" asp-action="create" asp-controller="MovieLinks" asp-route-id="@Model.Id">Add New Link</a>
+                <a class="btn-danger btn" role="button" asp-action="delete" asp-controller="MovieAdmin" asp-route-id="@Model.Id">Delete</a>
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="col-md-6">
+        <h2 class="text-center">Movie Watch Links</h2>
+        @await Component.InvokeAsync("MovieLinks", new { movieId = Model.Id,isAdmin=true })
+    </div> 
+</div>
+

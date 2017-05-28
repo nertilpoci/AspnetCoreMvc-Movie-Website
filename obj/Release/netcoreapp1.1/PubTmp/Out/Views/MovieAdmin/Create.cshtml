@@ -1,0 +1,113 @@
+﻿@model Movies.Models.Movie
+
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tab-content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tab-pane active" id="horizontal-form">
+
+                <form asp-action="Create" method="post" enctype="multipart/form-data" class="form-horizontal" data-toggle="validator" asp-controller="MovieAdmin">
+                    <h3 class="blank1">New Movie</h3>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-8">
+                            <input required type="text" asp-for="Name">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block danger" asp-validation-for="Name"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="YoutubeVideoId" class="col-sm-2 control-label">YoutubeVideoId</label>
+                        <div class="col-sm-8">
+                            <input required type="text" asp-for="YoutubeVideoId">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block danger" asp-validation-for="Name"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-8"><textarea asp-for="Description" cols="25" rows="6" maxlength="300" class="form-control"></textarea></div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block danger" asp-validation-for="Description"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ReleaseDate" class="col-sm-2 control-label">ReleaseDate</label>
+                        <div class="col-sm-8">
+                            <div class='input-group  date' id='ReleaseDate' data-provide="datepicker" style="margin:0px">
+                                <input type='text' asp-for="ReleaseDate" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-2 ">
+                            <p class="help-block danger" asp-validation-for="ReleaseDate"></p>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rating" class="col-sm-2 control-label">Rating</label>
+                        <div class="col-sm-8">
+                            <input type="number" min="0" max="5" required asp-for="Rating">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block danger" asp-validation-for="Rating"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="GenreId" class="col-sm-2 control-label">Genre</label>
+                        <div class="col-sm-8">
+                            <select asp-for="GenreId" required
+                                    asp-items="@(new SelectList(@ViewBag.MovieGenres,"Id","Name"))"></select>
+                        </div>
+                    </div>
+
+                  
+                    <div class="form-group">
+                        <label for="portrait" class="col-sm-2 control-label">Poster Portrait</label>
+                        <div class="col-sm-8">
+                            <input type="file" id="portrait" name="portrait">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block ">File to be shown as movie poster(Portrait)</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="landscape" class="col-sm-2 control-label">Poster Landscape</label>
+                        <div class="col-sm-8">
+                            <input type="file" id="landscape" name="landscape">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <p class="help-block ">File to be shown as movie poster(Landscape)</p>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <button class="btn-success btn">Submit</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+<script>
+    $('.datepicker').datepicker();
+</script>

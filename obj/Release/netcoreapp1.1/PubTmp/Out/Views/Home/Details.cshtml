@@ -1,0 +1,65 @@
+@model Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<link href="~/client/css/single.css" rel='stylesheet' type='text/css' />
+    <div class="single-page-agile-main">
+        <div class="container">
+            
+            <div class="single-page-agile-info">
+                <!-- /movie-browse-agile -->
+                <div class="show-top-grids-w3lagile">
+                    <div class="col-sm-8 single-left">
+                        <div class="song">
+                            <div class="song-info">
+                                <h2 class="text-info ">@Model.Name</h2>
+                            </div>
+                            <div class="video-grid-single-page-agileits">
+                                <div data-video="@Model.YoutubeVideoId" id="video"> <img src="@Url.Content(String.Format("{0}{1}", ViewBag.PosterFolder, Model.PosterLandscape))" alt="" class="img-responsive" /> </div>
+                            </div>
+                            <div class="bs-callout bs-callout-primary">
+                                <h4>Description</h4>
+                               @Model.Description
+                            </div>
+                           
+                        </div>
+                        <div class="song-grid-right">
+                            <h2 class="text-info">Watch Links</h2>
+
+                            @await Component.InvokeAsync("MovieLinks", new { movieId=Model.Id })
+                        </div>
+                        <div class="clearfix"> </div>
+
+                     
+                    </div>
+                    <div class="col-md-4 single-right">
+                        <h3>Similar Movies</h3>
+                   @await Component.InvokeAsync("MovieYouMightLike", new { genreId = Model.GenreId })
+                    </div>
+
+
+
+                    <div class="clearfix"> </div>
+                </div>
+
+                @await Component.InvokeAsync("BannerCarousel")
+
+
+            </div>
+            <!-- //w3l-latest-movies-grids -->
+        </div>
+    </div>
+
+
+
+<script src="~/client/js/simplePlayer.js"></script>
+<script>
+                                                $("document").ready(function () {
+                                                   
+                                                    $("#video").simplePlayer();
+                                                });
+</script>
+

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+<div class="row">
+    
+
+        
+                    <div class="w3_agile_featured_movies">
+                        @foreach (var movie in Model)
+                        {
+                            
+
+                           @await Component.InvokeAsync("Movie",new { movie=movie,posterFolder=ViewBag.PosterFolder,ribben="NEW",customCssClasses= "col-md-2" })
+
+                        }
+                      
+                       
+                        <div class="clearfix"> </div>
+                    </div>
+         
+ </div>

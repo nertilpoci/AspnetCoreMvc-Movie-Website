@@ -1,0 +1,155 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>One Movie Admin @ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/admin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/admin/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="~/admin/css/font-awesome.css" rel="stylesheet">
+
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="~/admin/css/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+   
+    <!--animate-->
+    <link href="~/admin/css/animate.css" rel="stylesheet" type="text/css" media="all">
+   
+    <!--//end-animate-->
+    <!----webfonts--->
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+   
+</head>
+
+
+
+<body class="sticky-header left-side-collapsed" onload="initMap()">
+    <section>
+        <!-- left side start-->
+        <div class="left-side sticky-left-side">
+
+            <!--logo and iconic logo start-->
+            <div class="logo">
+                <h1><a asp-action="Index" asp-controller="MovieAdmin">One Movie <span>Admin</span></a></h1>
+            </div>
+            <div class="logo-icon text-center">
+                <a asp-action="Index" asp-controller="MovieAdmin"><i class="lnr lnr-home"></i> </a>
+            </div>
+
+            <!--logo and iconic logo end-->
+            <div class="left-side-inner">
+
+                <!--sidebar nav start-->
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li class="active"><a asp-action="Index" asp-controller="MovieAdmin"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                    <li class="menu-list">
+                        <a href="#">
+                            <i class="fa fa-film"></i>
+                            <span>Movies</span>
+                        </a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Index" asp-controller="MovieAdmin">All</a> </li>
+                            <li><a asp-action="Create" asp-controller="MovieAdmin">Create</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#">
+                            <i class="fa fa-video-camera"></i>
+                            <span>Genres</span>
+                        </a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Index" asp-controller="Genres">All</a> </li>
+                            <li><a asp-action="Create" asp-controller="Genres">Create</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <!--sidebar nav end-->
+            </div>
+        </div>
+        <!-- left side end-->
+        <!-- main content start-->
+        <div class="main-content">
+            <div class="header-section">
+
+                <!--toggle button start-->
+                <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                <!--toggle button end-->
+                <!--notification menu start -->
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+
+                    <div class="menu-right">
+                        <div class="user-panel-top">
+
+                            <div class="profile_details">
+                                <ul>
+                                    <li class="dropdown profile_details_drop">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="profile_img">
+
+                                                <div class="user-name">
+
+                                                    <p>@UserManager.GetUserName(User)<span>Administrator</span></p>
+                                                </div>
+                                                <i class="lnr lnr-chevron-down"></i>
+                                                <i class="lnr lnr-chevron-up"></i>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+
+                                        <ul class="dropdown-menu drp-mnu">
+
+                                            <li> <button class="btn btn-link navbar-btn navbar-link" type="submit"><i class="fa fa-sign-out"></i> Logout </button></li>
+                                        </ul>
+             
+</li>
+                               
+                            </ul>
+                        </div>
+                       
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                </form>
+                <!--notification menu end -->
+            </div>
+            <div class="container" >
+                @RenderBody()
+            </div>
+        </div>
+        <!--footer section start-->
+        <footer>
+            <p> Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+        </footer>
+        <!--footer section end-->
+        <!-- main content end-->
+    </section>
+    <script src="~/admin/js/jquery-1.10.2.min.js"></script>
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" />
+    <script src="~/admin/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="~/admin/js/jquery.nicescroll.js"></script>
+    <script src="~/admin/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/admin/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

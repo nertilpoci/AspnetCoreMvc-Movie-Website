@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+<div class="single-grid-right">
+    @foreach(var movie in Model)
+    { 
+    <div class="single-right-grids">
+        <div class="col-md-4 single-right-grid-left">
+            <a asp-action="details" asp-controller="HOME" asp-route-id="@movie.Id"><img src="@Url.Content(String.Format("{0}{1}", ViewBag.PosterFolder, movie.PosterPortrait))" alt="" /></a>
+        </div>
+        <div class="col-md-8 single-right-grid-right">
+            <a asp-action="details" asp-controller="HOME" asp-route-id="@movie.Id" class="title"> @movie.Name</a>
+            <p class="author"><a asp-action="genre" asp-controller="home" asp-route-id="@movie.Genre.Id" class="author">@ViewBag.Genre.Name</a></p>
+           
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
+    }
+</div>

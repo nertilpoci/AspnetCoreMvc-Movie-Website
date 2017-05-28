@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+<div>
+
+    <div class="banner-bottom">
+        <div class="container">
+            <div class="w3_agile_banner_bottom_grid">
+                <div id="@ViewBag.OwlId" class="owl-carousel owl-theme">
+                    @foreach (var movie in Model)
+             {
+                <div class="item">
+
+                    @await Component.InvokeAsync("Movie", new { movie = movie, posterFolder = ViewBag.PosterFolder, ribben = "NEW", customCssClasses = "w3l-movie-gride-agile1" })
+
+
+                </div>
+             }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+   <!-- //banner-bottom-plugin -->
+<!-- banner-bottom-plugin -->
+<script type="text/javascript" src="~/client/js/jquery-2.1.4.min.js"></script>
+<link href="~/client/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+<script>
+
+    $(window).load(function () {
+        //todo fix script load. 
+        //script was not loading via script url
+                    $.getScript('client/js/owl.carousel.js').then(function () {
+
+                            $("#@ViewBag.OwlId").owlCarousel({
+
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                    items: 5,
+                    itemsDesktop: [640, 4],
+                    itemsDesktopSmall: [414, 3]
+
+                });
+                    });
+
+    });
+
+</script>

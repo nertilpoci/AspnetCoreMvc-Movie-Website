@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+<div id="slidey" style="display:none;">
+    <ul>
+    @foreach (var movie in Model)
+    {
+        <li>
+            <img src="@Url.Content(String.Format("{0}{1}", ViewBag.PosterFolder, movie.PosterLandscape))" alt="@movie.Name" />
+            <p class='title'>@movie.Name</p>
+            <p class='description'> @movie.Description</p>" 
+
+        </li>
+
+
+        }
+         </ul>
+</div>
+<script src="~/client/js/jquery-2.1.4.min.js"></script>
+<script src="~/client/js/jquery.slidey.js"></script>
+<script src="~/client/js/jquery.dotdotdot.min.js"></script>
+<script type="text/javascript">
+    $("#slidey").slidey({
+        interval: 8000,
+        listCount: 5,
+        autoplay: false,
+        showList: true
+    });
+    $(".slidey-list-description").dotdotdot();
+</script>

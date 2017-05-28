@@ -1,0 +1,22 @@
+﻿@model Movies.Models.Movie
+
+<div class="w3l-movie-gride-agile @ViewBag.CustomContainerClasses">
+    <a asp-action="details" asp-controller="home" asp-route-id="@Model.Id" class="hvr-shutter-out-horizontal">
+        <img src="@Url.Content(String.Format("{0}{1}", ViewBag.PosterFolder, Model.PosterPortrait))" title="@Model.Name" class="img-responsive" alt=" " />
+        <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+    </a>
+    <div class="mid-1 agileits_w3layouts_mid_1_home">
+        <div class="w3l-Model-text">
+            <h6><a asp-action="details" asp-controller="home" asp-route-id="@Model.Id">@Model.Name</a></h6>
+        </div>
+        <div class="mid-2 agile_mid_2_home">
+            <p>@Model.ReleaseDate.Date.Year.ToString()</p>
+            @await Component.InvokeAsync("Rating", (decimal)Model.Rating)
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+    <div class="ribben">
+        <p>@ViewBag.Ribben</p>
+    </div>
+</div>

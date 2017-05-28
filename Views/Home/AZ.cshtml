@@ -1,0 +1,41 @@
+@model Sakura.AspNetCore.IPagedList<Movies.Models.Movie>
+
+
+@{
+    ViewData["Title"] = "AZ - " + ViewBag.Character;
+}
+<div class="container">
+    <div class="row">
+        <div class="inner-agile-w3l-part-head">
+            <h3 class="w3l-inner-h-title text-center">Movie List</h3>
+            <p class="w3ls_head_para text-center text-muted">Movies starting with - <span class="text-info">@ViewBag.Character</span> </p>
+        </div>
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            @foreach (var letter in ViewBag.Letters)
+            {
+                <li role="presentation"><a asp-action="AZ" asp-route-character="@letter" role="tab">@letter</a></li>
+            }
+        </ul>
+
+    </div>
+    <div class="row">
+      
+                  
+        @if(Model.Count==0)
+        {
+            <p class="text-info text-muted text-center">
+                There are no movies starting with <span class="text-danger">@ViewBag.Character</span>
+            </p>
+
+        }
+        else
+        {
+            @await Component.InvokeAsync("MovieList", Model)
+
+        }
+    </div>
+    <pager/>
+</div>
+
+           
+   

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<KeyValuePair<Genre,IEnumerable<Movie>>>
+<!-- Latest-tv-series -->
+<div class="Latest-tv-series">
+    <h4 class="latest-text w3_latest_text w3_home_popular">Most Popular Movies</h4>
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    @foreach (var group in Model)
+                    {
+
+                        <li>
+                            <div class="agile_tv_series_grid">
+                                <div class="col-md-6 agile_tv_series_grid_left">
+                                    <div class="w3ls_market_video_grid1">
+                                        <img src="@Url.Content(String.Format("{0}{1}", ViewBag.PosterFolder, @group.Value.First().PosterLandscape))" alt=" " class="" />
+                                        <a class="w3_play_icon" asp-action="details" asp-controller="home" asp-route-id="@group.Value.First().Id">
+                                            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></a></div></div><div class="col-md-6 agile_tv_series_grid_right">
+                                    <p class="fexi_header">@group.Value.First().Name</p>
+                                    <p class="fexi_header_para"><span class="conjuring_w3">Description<label>:</label></span> @group.Value.First().Description ...</p>
+                                    <p class="fexi_header_para"><span>Date of Release<label>:</label></span> @group.Value.First().ReleaseDate.Year </p>
+                                    <p class="fexi_header_para">
+                                        <span>Genre<label>:</label> </span>
+                                        <a  asp-action="genre">@group.Key.Name</a> |
+                                       
+                                    </p>
+                                    @await  Component.InvokeAsync("Rating", (decimal)group.Value.First().Rating)
+                                </div>
+                                <div class="clearfix"> </div>
+                                <div class="agileinfo_flexislider_grids">
+                                    @foreach (var movie in group.Value)
+                                    {
+                                        @await Component.InvokeAsync("Movie", new { movie = movie, posterFolder = ViewBag.PosterFolder, ribben = "NEW", customCssClasses = "col-md-2" })
+                                    }
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                
+                  
+                </ul>
+            </div>
+        </section>
+        <!-- flexSlider -->
+        <script type="text/javascript" src="~/client/js/jquery-2.1.4.min.js"></script>
+
+        <link rel="stylesheet" href="~/client/css/flexslider.css" type="text/css" media="screen" property="" />
+        <script defer src="~/client/js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function (slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+        </script>
+        <!-- //flexSlider -->
+    </div>
+</div>

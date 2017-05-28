@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Movies.Models.MovieLinks>
+
+
+@{
+
+    int rowNo = 1;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Source</th>
+            @if (ViewBag.IsAdmin)
+            {
+                <th></th>
+
+            }
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @(rowNo++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @if (ViewBag.IsAdmin)
+                    {
+                        <a href="@item.Source" target="_blank">@item.Source</a>
+                    }
+                    else
+                    {
+                        <a href="@item.Source" target="_blank">Open link</a>
+
+                    }
+
+                </td>
+                @if (ViewBag.IsAdmin)
+                {
+                    <td>
+                        <a asp-action="edit" asp-route-id="@item.Id" asp-controller="MovieLinks">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a asp-action="delete" asp-route-id="@item.Id" asp-controller="MovieLinks">
+                            <span class="danger glyphicon glyphicon-remove"></span>
+                        </a>
+                    </td>
+
+                }
+
+            </tr>
+            }
+
+
+
+        </tbody>
+    </table>

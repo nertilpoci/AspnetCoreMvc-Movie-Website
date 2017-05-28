@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+@{
+    ViewData["Title"] = "Home Page";
+   
+}
+@await Component.InvokeAsync("HeaderSlider")
+   @await Component.InvokeAsync("BannerCarousel")
+
+@await Component.InvokeAsync("FeaturedMovies")
+
+@await Component.InvokeAsync("LatestMovies")
